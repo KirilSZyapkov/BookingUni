@@ -14,7 +14,7 @@ module.exports = {
     },
     async editHotel(req, res) {
         const id = req.params.id;
-        let creatorId;
+        let creatorId = req.user._id;
         try {
             await req.storage.updateHotelById(id, req.body, creatorId)
             res.redirect('/hotels/details/' + id);
