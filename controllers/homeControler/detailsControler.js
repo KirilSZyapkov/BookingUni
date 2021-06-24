@@ -20,9 +20,10 @@ module.exports = {
     },
 
     async deleteHotel(req, res) {
-        const hotel = await req.storage.getHotelById(hotelId);
+         let hotel;
         try {
-            const hotelId = req.params.id;
+            const hotelId = req.params.id
+            hotel = await req.storage.getHotelById(hotelId);
             await req.storage.removeHotelById(hotelId);
             res.redirect('/hotels');
         } catch (err) {
